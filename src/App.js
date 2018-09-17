@@ -3,12 +3,21 @@ import styled from 'styled-components';
 import emojiData from './emojiData.json';
 
 class App extends Component {
+	state = {
+		input: ''
+	}
+
+	handleChange = () => {
+		this.setState({ input: event.target.value })
+	}
+
+
 	render() {
 		console.log(emojiData);
 		return (
 			<AppContainer className="App">
 				<h1>Emoji Finder</h1>
-				<input placeholder="Search for your Emoji" />
+				<input placeholder="Search for your Emoji" onChange={this.handleChange} />
 				<div>
 					{emojiData.slice(0, 20).map(emoji => {
 						return (
@@ -21,7 +30,6 @@ class App extends Component {
 						);
 					})}
 				</div>
-				{/* To do: put data results here */}
 			</AppContainer>
 		);
 	}
